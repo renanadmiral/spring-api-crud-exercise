@@ -34,4 +34,15 @@ public class BancoCliente {
                 });
         return detalhesCliente(id);
     }
+
+    public Cliente deletaCliente(UUID id, RequestCliente requestCliente) throws Exception {
+        Cliente clienteDeletado = detalhesCliente(id);
+        for (Cliente cliente : BancoCliente.clientes) {
+            if (Objects.equals(cliente.getId(), id)) {
+                BancoCliente.clientes.remove(cliente);
+                break;
+            }
+        }
+        return clienteDeletado;
+    }
 }

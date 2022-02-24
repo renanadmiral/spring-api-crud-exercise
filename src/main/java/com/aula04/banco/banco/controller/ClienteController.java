@@ -65,4 +65,13 @@ public class ClienteController {
 
         return ResponseEntity.ok(new ResponseCliente(cliente));
     }
+    @DeleteMapping("{id}")
+    public ResponseEntity<ResponseCliente> deletaCliente(
+            @PathVariable UUID id,
+            @RequestBody RequestCliente requestCliente
+    ) throws Exception {
+        Cliente cliente = bancoCliente.deletaCliente(id, requestCliente);
+
+        return ResponseEntity.ok(new ResponseCliente(cliente));
+    }
 }
